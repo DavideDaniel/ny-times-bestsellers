@@ -37,15 +37,26 @@ app.post('/book', function ( req, res ) {
 	counter++
 	console.log( books.counter );
 	res.method = 'get';
-	fs.writeFile( 'nytList.json', JSON.stringify( books ) )
+	// fs.writeFile( 'nytList.json', JSON.stringify( books ) )
 	res.redirect( '/books' );
 } );
 
 
-app.put('/book/:id')
+app.put('/book/:id', function ( req, res ) {
+	books[ req.params.id ].title = req.body.newTitle;
+	books[ req.params.id ].author = req.body.newAuthor;
+	req.method = 'get';
+	// fs.writeFile( 'nytList.json', JSON.stringify( books ) )
+	res.redirect( '/book/' + req.params.id )
+} );
 
 
-app.delete('/book/:id')
+app.delete('/book/:id', function ( req, res ) {
+	delete books[ req.params.id ];
+	req.method = 'get';
+	// fs.writeFile( 'nytList.json', JSON.stringify( books ) )
+	res.redirect( '/books' );
+} );
 
 app.listen( 3000 );
 
