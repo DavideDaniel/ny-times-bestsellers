@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>h</title>
+    </head>
+    <body>
+    <nav class = "head"><h3>NYTimes Bestseller List</h3></nav>
+    <div class = "wrapper">
+        <div class = "book">
+            <header>
+                <a href="/books">Back</a>
+            </header>
+            <h3><%= thisBook.name  %></h3>
+            <h4><%= thisBook.author %></h4>
+            <p>Description: <%= thisBook.description%> </p>
+        </div>
+        <div class="update">
+            <h3>Update <%= thisBook.name %></h3>
+            <form action="/book/<%= thisBook.id %>?_method=put" method="post">
+                <input type="hidden" name="_method" value="put" required>
+                <input type="text" name = "newTitle" placeholder="Change title">
+                <input type="text" name = "newAuthor" placeholder="Change author">
+                <button>Update</button>
+            </form>
+            <h3>Delete <%= thisBook.name  %> </h3>
+            <form action="/book/<%= thisBook.id %>?_method=delete" method="post">
+                <input type="hidden" name="_method" value="delete" required>
+                <button>Delete</button>
+
+            </form>
+        </div>
+    <nav class = "foot"></nav>
+
+
+</body>
+</html>

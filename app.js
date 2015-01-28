@@ -16,7 +16,13 @@ app.get('/books', function ( req, res ) {
 	} )
 } );
 
-app.get('/book/:id')
+app.get('/book/:id', function ( req, res ) {
+	console.log("got a request for "+ req.params.id  );
+	var thisBook = books[ req.params.id ]
+	res.render( 'show.ejs', {
+		thisBook: thisBook
+	} )
+} );
 
 
 app.post('/book', function ( req, res ) {

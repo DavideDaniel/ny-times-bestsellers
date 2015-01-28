@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>NY Times Bestsellers</title>
-</head>
-<body>
-<h1>NYTimes Bestseller List</h1>
-	<ul>
-		<% for( var book in books){ %>
+    <head>
+        <meta charset="UTF-8">
+        <title>NY Times Bestsellers</title>
+        <link rel="stylesheet" type="text/css" href="../public/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    </head>
+    <body>
+    <nav class = "head"><h3>NYTimes Bestseller List</h3></nav>
+    <div class = "wrapper">
+        <div class = "list">
+            <ul>
+                <% for( var book in books){ %>
 
-		<li><a href="/book/<%= books[book].id %>">
-			<%= books[book].id %></a>
-			<%= books[book].title  %> by <%= books[book].author %>
-		</li>
-		<%	} %>
-		
-	</ul>
-
-	<h3>Add a book here</h3>
-	<form action="/book" method="post">
-		<input type="text" name="title" placeholder="Title" required>
-		<input type="text" name="author" placeholder="Author" required>
-		<button>Submit</button>
-	</form>
+                <li><a href= "/book/<%= books[book].id %>">
+                    <%= books[book].id %></a>
+                    <%= books[book].title  %> by <%= books[book].author %>
+                </li>
+                <%	} %>
+            </ul>
+        </div>
+    <nav class = "foot"></nav>
 </body>
+
 </html>
